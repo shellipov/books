@@ -21,22 +21,19 @@ function AddBook() {
     year_of_publishing,
     book_image,
   } = inputs;
+  const year = new Date().getFullYear();
   const [error, setError] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [isImageLoad, setIsImageLoad] = useState(false);
 
   function changeInputValue({ target: { name, value } }) {
+    setError(null);
     setInputs({ ...inputs, [name]: value });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let errors = 0;
-
-    if (inputs.book_name.length >= 30) {
-      errors++;
-      setError("Название книги слишком длинное");
-    }
 
     if (inputs.autors.split(' ').length%2 !== 0) {
       errors++;
@@ -46,16 +43,6 @@ function AddBook() {
     if (inputs.autors.split(' ').find(word => word.length > 20)) {
       errors++;
       setError("Имя или Фамилия не должны быть длиннее 20 символов");
-    }
-      //не работает
-    if (1000 > +inputs.page_number > 0) {
-      errors++;
-      setError("Книга должна иметь от 0 до 1000 страниц");
-    }
-
-    if (inputs.publisher_name.length > 30) {
-      errors++;
-      setError("Название издательства не должно превышать 30 символов");
     }
 
     if (errors === 0) {
@@ -72,11 +59,6 @@ function AddBook() {
       setModalVisible(true);
     }
   };
-
-  function test (e){
-    console.log(e.target.files[0].mozFullPath);
-    console.log(e.target.value);
-  }
 
   return (
     <>
@@ -99,6 +81,7 @@ function AddBook() {
               name="book_name"
               onChange={(e) => changeInputValue(e)}
               value={book_name}
+              maxlength={30}
             />
           </label>
 
@@ -125,6 +108,8 @@ function AddBook() {
               name="page_number"
               onChange={(e) => changeInputValue(e)}
               value={page_number}
+              min={1}
+              max={10000}
             />
           </label>
 
@@ -138,6 +123,7 @@ function AddBook() {
               name="publisher_name"
               onChange={(e) => changeInputValue(e)}
               value={publisher_name}
+              maxlength={30}
             />
           </label>
 
@@ -151,6 +137,8 @@ function AddBook() {
               name="year_of_publishing"
               onChange={(e) => changeInputValue(e)}
               value={year_of_publishing}
+              min={1800}
+              max={year}
             />
           </label>
 
@@ -164,19 +152,6 @@ function AddBook() {
               name="book_image"
               onChange={(e) => changeInputValue(e)}
               value={book_image}
-            />
-          </label>
-
-          <label>
-            Выберите файл
-            <input
-              required
-              className="form-control form-control-sm"
-              placeholder="Например: https://html5book.ru/wp-content/uploads/2017/05/krasivaya_forma_html.jpg"
-              type="file"
-              name="book_image_2"
-              onChange={(e) => test(e)}
-              // value={book_image}
             />
           </label>
 
