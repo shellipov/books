@@ -5,26 +5,23 @@ import Footer from "./components/Footer";
 import BookList from "./components/BookList";
 import AddBook from "./components/AddBook";
 import EditBook from "./components/EditBook";
-import { Provider } from "react-redux";
-import store from "./redux/store";
+
 import "./styles/main.scss";
 
 function App() {
   return (
     <>
-      <Provider store={store}>
-        <Router>
+      <Router>
         <Header />
-            <section className="container">
+        <section className="container">
           <Switch>
-              <Route exact path="/add_book" component={AddBook} />
-              <Route exact path="/edit_book:id" component={EditBook} />
-              <Route exact path="/" component={BookList} />
+            <Route exact path="/add_book" component={AddBook} />
+            <Route exact path="/edit_book:id" component={EditBook} />
+            <Route exact path="/" component={BookList} />
           </Switch>
-            </section>
+        </section>
         <Footer />
-        </Router>
-      </Provider>
+      </Router>
     </>
   );
 }
