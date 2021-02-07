@@ -1,0 +1,38 @@
+@import "reset";
+
+body {
+  height: 100vh;
+  &:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -2;
+    background-color: black;
+  }
+  &:after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: black;
+    background-image: url("../images/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(6px);
+  }
+  section {
+    background-color: rgba(255, 255, 255, 0.671);
+    height: 100vh;
+    h1{
+      padding: 4rem 0 2rem;
+      text-align: center;
+    }
+  }
+}

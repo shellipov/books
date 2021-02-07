@@ -1,0 +1,16 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(15, 6, 3);
+  color: white;
+  padding: 0.5rem;
+  z-index: 2;
+  .title{
+    text-align: center;
+  }
+  .btn{
+    display: block;
+    margin: 0 auto;
+  }
+}
