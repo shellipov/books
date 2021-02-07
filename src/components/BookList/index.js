@@ -29,27 +29,46 @@ function BookList() {
     const sortValues = sort_type.split(" ");
     const newBooksList = [...books];
     let sortBooksList = [];
-    if (sortValues[1] === "↓") {
-      sortBooksList = newBooksList.sort((a, b) => {
-        if (a[sortValues[0]][0] < b[sortValues[0]][0]) return -1;
-        if (a[sortValues[0]][0] > b[sortValues[0]][0]) return 1;
-          return 0;
-      });
+
+    if (sortValues[0] === "year_of_publishing") {
+      if (sortValues[1] === "↓") {
+        sortBooksList = newBooksList.sort((a, b) => {
+          return a[sortValues[0]] - b[sortValues[0]]
+
+        });
+      }
+      if (sortValues[1] === "↑") {
+        sortBooksList = newBooksList.sort((a, b) => {
+          return b[sortValues[0]] - a[sortValues[0]]
+
+        });
+      }
     }
-    if (sortValues[1] === "↑") {
-      sortBooksList = newBooksList.sort((a, b) => {
-        if (a[sortValues[0]][0] > b[sortValues[0]][0]) return -1;
-        if (a[sortValues[0]][0] < b[sortValues[0]][0]) return 1;
+
+    if (sortValues[0] !== "year_of_publishing") {
+      if (sortValues[1] === "↓") {
+        sortBooksList = newBooksList.sort((a, b) => {
+          if (a[sortValues[0]][0] < b[sortValues[0]][0]) return -1;
+          if (a[sortValues[0]][0] > b[sortValues[0]][0]) return 1;
           return 0;
-      });
+        });
+      }
+      if (sortValues[1] === "↑") {
+        sortBooksList = newBooksList.sort((a, b) => {
+          if (a[sortValues[0]][0] > b[sortValues[0]][0]) return -1;
+          if (a[sortValues[0]][0] < b[sortValues[0]][0]) return 1;
+          return 0;
+        });
+      }
     }
+
     window.localStorage.setItem("sort_type", JSON.stringify(sort_type));
     setBooks(sortBooksList);
   }
 
-  useEffect(()=>{
-    sort(sortBy)
-  },[sortBy])
+  useEffect(() => {
+    sort(sortBy);
+  }, [sortBy]);
 
   return (
     <>
@@ -61,12 +80,30 @@ function BookList() {
             onChange={(e) => sort(e.target.value)}
             className="custom-select"
           >
-            <option selected={sortBy === "book_name ↓"} value="book_name ↓">Названию ↓</option>
-            <option selected={sortBy === "book_name ↑"} value="book_name ↑">Названию ↑</option>
-            <option selected={sortBy === "autors ↓"} value="autors ↓">Автору ↓</option>
-            <option selected={sortBy === "autors ↑"} value="autors ↑">Автору ↑</option>
-            <option selected={sortBy === "year_of_publishing ↓"} value="year_of_publishing ↓">Дате публикации ↓</option>
-            <option selected={sortBy === "year_of_publishing ↑"} value="year_of_publishing ↑">Дате публикации ↑</option>
+            <option selected={sortBy === "book_name ↓"} value="book_name ↓">
+              Названию ↓
+            </option>
+            <option selected={sortBy === "book_name ↑"} value="book_name ↑">
+              Названию ↑
+            </option>
+            <option selected={sortBy === "autors ↓"} value="autors ↓">
+              Автору ↓
+            </option>
+            <option selected={sortBy === "autors ↑"} value="autors ↑">
+              Автору ↑
+            </option>
+            <option
+              selected={sortBy === "year_of_publishing ↓"}
+              value="year_of_publishing ↓"
+            >
+              Дате публикации ↓
+            </option>
+            <option
+              selected={sortBy === "year_of_publishing ↑"}
+              value="year_of_publishing ↑"
+            >
+              Дате публикации ↑
+            </option>
           </select>
         </div>
         <div className="card_list">
