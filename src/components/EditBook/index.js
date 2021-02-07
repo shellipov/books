@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import book from "../../images/book.jpg";
+
 import Modal from "../Modal";
 import { useParams } from "react-router-dom";
 import "./style.scss";
@@ -23,8 +25,11 @@ function EditBook() {
     year_of_publishing,
     book_image,
   } = inputs;
+  const year = new Date().getFullYear();
   const [modalVisible, setModalVisible] = useState(false);
   const [error, setError] = useState(null);
+  const [isImageLoad, setIsImageLoad] = useState(false);
+
 
   useEffect(() => {
     const editableBook = JSON.parse(window.localStorage.getItem("books")).find(
@@ -34,16 +39,24 @@ function EditBook() {
   }, [id]);
 
   function changeInputValue({ target: { name, value } }) {
+    setError(null);
     setInputs({ ...inputs, [name]: value });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let errors = 0;
-    if (inputs.book_name.length >= 30) {
+
+    if (inputs.autors.split(' ').length%2 !== 0) {
       errors++;
-      setError("Название книги слишком длинное");
+      setError("Введите Имя и Фамилю автора через пробел");
     }
+
+    if (inputs.autors.split(' ').find(word => word.length > 20)) {
+      errors++;
+      setError("Имя или Фамилия не должны быть длиннее 20 символов");
+    }
+
     if (errors === 0) {
       const books = JSON.parse(window.localStorage.getItem("books"));
       const EditableBook = books.find((book) => book.id === id);
@@ -76,6 +89,7 @@ function EditBook() {
               name="book_name"
               onChange={(e) => changeInputValue(e)}
               value={book_name}
+              maxlength={30}
             />
           </label>
 
@@ -102,6 +116,8 @@ function EditBook() {
               name="page_number"
               onChange={(e) => changeInputValue(e)}
               value={page_number}
+              min={1}
+              max={10000}
             />
           </label>
 
@@ -115,6 +131,7 @@ function EditBook() {
               name="publisher_name"
               onChange={(e) => changeInputValue(e)}
               value={publisher_name}
+              maxlength={30}
             />
           </label>
 
@@ -128,6 +145,8 @@ function EditBook() {
               name="year_of_publishing"
               onChange={(e) => changeInputValue(e)}
               value={year_of_publishing}
+              min={1800}
+              max={year}
             />
           </label>
 
@@ -144,12 +163,34 @@ function EditBook() {
             />
           </label>
 
-          {error && <p className="error">Ошибка: {error}</p>}
+          <div className="row justifu-content-center align-items-center">
+            <div className="col-md-4">
+              {isImageLoad ? (
+                <>
+                  <img className="book" src={book_image} alt="book_image" />
+                </>
+              ) : (
+                <>
+                  <img className="book" src={book} alt="book_image" />
+                </>
+              )}
+            </div>
+            <div className="col-md-8">
+              <button type="submit" className="btn btn-success">
+              Сохранить
+              </button>
+            </div>
+          </div>
 
-          <button type="submit" className="btn btn-success">
-            Сохранить
-          </button>
+          {error && <p className="error">Ошибка: {error}</p>}
         </form>
+        <img
+          onLoad={() => setIsImageLoad(true)}
+          onError={() => setIsImageLoad(false)}
+          hidden={true}
+          src={book_image}
+          alt="book_image"
+        />
       </div>
     </>
   );
