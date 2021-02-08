@@ -12,7 +12,7 @@ const startBooks = [
   {
     autors: "Лев Толстой",
     book_image:
-      "https://img3.labirint.ru/rc/af3fe0ff97107cd1f761ded116f3c015/220x340/books68/676601/cover.jpg?1564166597",
+      "https://b1.culture.ru/c/365442.jpg",
     book_name: "Война и Мир",
     id: "20210208T103828799Z",
     page_number: "990",

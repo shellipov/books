@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import book from '../../images/book.jpg';
-import startBooks from "../../constants"
+import book from "../../images/book.jpg";
+import startBooks from "../../constants";
 import "./style.scss";
 
 function BookList() {
   const history = useHistory();
-  const bookImage = useRef(null);
   const [books, setBooks] = useState(
     JSON.parse(window.localStorage.getItem("books"))
       ? JSON.parse(window.localStorage.getItem("books"))
-      : []
+      : startBooks
   );
   const [sortBy, setSortBy] = useState(
     JSON.parse(window.localStorage.getItem("sort_type"))
@@ -67,23 +66,20 @@ function BookList() {
     setBooks(sortBooksList);
   }
 
-  function getImage(img){
-    img.src=book;
+  function getImage(img) {
+    img.src = book;
   }
 
-  useEffect(() => {    
+  useEffect(() => {
     const start = JSON.parse(window.localStorage.getItem("start"));
-  if (!start) {
-    window.localStorage.setItem("start", JSON.stringify(true));
-    window.localStorage.setItem(
-      "books",
-      JSON.stringify(startBooks)
-    );
-    console.log('lalala');
-    setBooks(startBooks)
-  }
-sort(sortBy)
-},[sortBy])
+    if (!start) {
+      window.localStorage.setItem("start", JSON.stringify(true));
+      window.localStorage.setItem("books", JSON.stringify(startBooks));
+      setBooks(startBooks);
+    }
+    sort(sortBy)
+
+  }, [sortBy]);
 
   return (
     <>
@@ -97,38 +93,12 @@ sort(sortBy)
               className="custom-select custom-select-sm"
               defaultValue={sortBy}
             >
-              <option 
-              // selected={sortBy === "book_name ↓"} 
-              value="book_name ↓">
-                Названию ↓
-              </option>
-              <option 
-              // selected={sortBy === "book_name ↑"} 
-              value="book_name ↑">
-                Названию ↑
-              </option>
-              <option 
-              // selected={sortBy === "autors ↓"} 
-              value="autors ↓">
-                Автору ↓
-              </option>
-              <option 
-              // selected={sortBy === "autors ↑"} 
-              value="autors ↑">
-                Автору ↑
-              </option>
-              <option
-                // selected={sortBy === "year_of_publishing ↓"}
-                value="year_of_publishing ↓"
-              >
-                Дате публикации ↓
-              </option>
-              <option
-                // selected={sortBy === "year_of_publishing ↑"}
-                value="year_of_publishing ↑"
-              >
-                Дате публикации ↑
-              </option>
+              <option value="book_name ↓">Названию ↓</option>
+              <option value="book_name ↑">Названию ↑</option>
+              <option value="autors ↓">Автору ↓</option>
+              <option value="autors ↑">Автору ↑</option>
+              <option value="year_of_publishing ↓">Дате публикации ↓</option>
+              <option value="year_of_publishing ↑">Дате публикации ↑</option>
             </select>
           </div>
         </div>
@@ -140,14 +110,23 @@ sort(sortBy)
                 <div className="row align-items-center">
                   <div className="col-md-5">
                     <div className="image_container">
-                      <img
+                      {/* <img
                         src={book.book_image}
                         alt="book_image"
-                        ref={bookImage}
-                        onError={(e) =>
-                          getImage(e.target)
-                        }
-                      />
+                        onError={(e) => getImage(e.target)}
+                      /> */}
+                      <a
+                        className="customer fansy_link"
+                        data-fancybox="gallery"
+                        href={book.book_image}
+                      >
+                        <img
+                          className="fansy_image"
+                          src={book.book_image}
+                          alt="book_image"
+                          onError={(e) => getImage(e.target)}
+                        />
+                      </a>
                     </div>
                   </div>
                   <div className="col-md-7 book_description">
