@@ -69,7 +69,7 @@ function AddBook() {
         />
       )}
       <div className="add_book_page">
-        <h1>Добавить книгу</h1>
+        <h1>Новая книга</h1>
         <form onSubmit={handleSubmit} className="add_book_form">
           <label>
             Название книги
@@ -175,11 +175,9 @@ function AddBook() {
           </div>
 
           <div className="row justify-content-center align-items-center">
-            <div className="col-md-12">
               <button type="submit" className="btn btn-success">
                 Добавить
               </button>
-            </div>
           </div>
         </form>
         <img

@@ -81,7 +81,9 @@ function BookList() {
     );
     console.log('lalala');
     setBooks(startBooks)
-  }},[startBooks])
+  }
+sort(sortBy)
+},[sortBy])
 
   return (
     <>
@@ -92,28 +94,37 @@ function BookList() {
           <div className="col-md-auto">
             <select
               onChange={(e) => sort(e.target.value)}
-              className="custom-select"
+              className="custom-select custom-select-sm"
+              defaultValue={sortBy}
             >
-              <option selected={sortBy === "book_name ↓"} value="book_name ↓">
+              <option 
+              // selected={sortBy === "book_name ↓"} 
+              value="book_name ↓">
                 Названию ↓
               </option>
-              <option selected={sortBy === "book_name ↑"} value="book_name ↑">
+              <option 
+              // selected={sortBy === "book_name ↑"} 
+              value="book_name ↑">
                 Названию ↑
               </option>
-              <option selected={sortBy === "autors ↓"} value="autors ↓">
+              <option 
+              // selected={sortBy === "autors ↓"} 
+              value="autors ↓">
                 Автору ↓
               </option>
-              <option selected={sortBy === "autors ↑"} value="autors ↑">
+              <option 
+              // selected={sortBy === "autors ↑"} 
+              value="autors ↑">
                 Автору ↑
               </option>
               <option
-                selected={sortBy === "year_of_publishing ↓"}
+                // selected={sortBy === "year_of_publishing ↓"}
                 value="year_of_publishing ↓"
               >
                 Дате публикации ↓
               </option>
               <option
-                selected={sortBy === "year_of_publishing ↑"}
+                // selected={sortBy === "year_of_publishing ↑"}
                 value="year_of_publishing ↑"
               >
                 Дате публикации ↑
@@ -165,7 +176,7 @@ function BookList() {
                         onClick={() => history.push(`/edit_book${book.id}`)}
                         className="btn btn-outline-warning"
                       >
-                        Изменить
+                        Редактировать
                       </button>
                       <button
                         onClick={() => {

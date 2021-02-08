@@ -75,8 +75,8 @@ function EditBook() {
         />
       )}
       <div className="add_book_page">
-        <h1>Редактор книг</h1>
-        <span className="book_id">Книга - {id}</span>
+        <h1>Редакторовать</h1>
+        {/* <span className="book_id">Книга - {id}</span> */}
         <form onSubmit={handleSubmit} className="add_book_form">
           <label>
             Название книги
@@ -181,12 +181,10 @@ function EditBook() {
             </div>
           </div>
 
-          <div className="row justifu-content-center align-items-center">
-            <div className="col-md-12">
+          <div className="row justify-content-center align-items-center">
               <button type="submit" className="btn btn-success">
                 Сохранить
               </button>
-            </div>
           </div>
         </form>
         <img
