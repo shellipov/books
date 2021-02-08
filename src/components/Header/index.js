@@ -13,7 +13,7 @@ function Header() {
           <div id="row justify-content-center"></div>
           <Route exact path="/">
             <Link
-              className="btn btn-primary btn-sm header_botton"
+              className="btn btn-outline-light btn-sm header_botton"
               to="/add_book"
             >
               Добавить книгу
@@ -21,13 +21,13 @@ function Header() {
           </Route>
 
           <Route exact path="/add_book">
-            <Link className="btn btn-primary btn-sm header_botton" to="/">
+            <Link className="btn btn-outline-light btn-sm header_botton" to="/">
               Список книг
             </Link>
           </Route>
 
           <Route exact path="/edit_book:id">
-            <Link className="btn btn-primary btn-sm header_botton" to="/">
+            <Link className="btn btn-outline-light btn-sm header_botton" to="/">
               Назад
             </Link>
           </Route>
