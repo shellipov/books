@@ -4,7 +4,7 @@
     margin-left: 6rem;
   }
   .card_list {
-    height: 77vh;
+    height: 75vh;
     overflow: scroll;
     background: rgba(0, 0, 0, 0.705);
     border-radius: 3px;
@@ -21,14 +21,14 @@
         border-right: 2px black solid;
         img {
           display: block;
-          height: 18rem;
+          height: 16rem;
           margin: .5rem auto;
           overflow: hidden;
           box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
       }
       .card_buttons{
-        padding: 2rem 0;
+        padding: 2rem 0 1rem;
         button{
           margin-right: 1rem;
         }

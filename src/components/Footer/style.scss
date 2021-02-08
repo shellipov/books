@@ -1,11 +1,12 @@
 footer {
-  background: rgb(26, 25, 25);
+  background: #1a1616;  
   width: 100%;
   color: white;
   position: fixed;
   bottom: 0;
-  padding: .5rem;
   .title {
     text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px
   }
 }

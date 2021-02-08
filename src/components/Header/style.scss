@@ -2,14 +2,16 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgb(15, 6, 3);
+  background: linear-gradient(30deg, #13547A, rgb(40, 21, 49));  
+
   color: white;
-  padding: 0.5rem;
   z-index: 2;
   .button-block{
     text-align: center;
   }
   .title{
     text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px
   }
 }
