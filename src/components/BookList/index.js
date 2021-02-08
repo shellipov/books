@@ -139,7 +139,7 @@ function BookList() {
                       />
                     </div>
                   </div>
-                  <div className="col-md-7">
+                  <div className="col-md-7 book_description">
                     <span>
                       <b>Книга:</b> {book.book_name}
                     </span>

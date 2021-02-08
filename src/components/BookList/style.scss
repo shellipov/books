@@ -37,3 +37,15 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .card_list {
+    margin: 0 !important
+  }
+  .image_container{
+    border-right: 0px solid rgb(255, 255, 255) !important;
+  }
+  .sort{
+    margin-left: 0 !important;
+  }
+}
+
