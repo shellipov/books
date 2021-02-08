@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer"> 
       <div className="row justify-content-center align-items-center">
         <div className="col lg-auto">
-        <div className="title">Тестовое задание для Лабораториии Касперского</div>
+        <div className="title">Тестовое задание для Лаборатории Касперского</div>
         </div>
       </div>
     </footer>
