@@ -33,14 +33,12 @@ function BookList() {
     if (sortValues[0] === "year_of_publishing") {
       if (sortValues[1] === "↓") {
         sortBooksList = newBooksList.sort((a, b) => {
-          return a[sortValues[0]] - b[sortValues[0]]
-
+          return a[sortValues[0]] - b[sortValues[0]];
         });
       }
       if (sortValues[1] === "↑") {
         sortBooksList = newBooksList.sort((a, b) => {
-          return b[sortValues[0]] - a[sortValues[0]]
-
+          return b[sortValues[0]] - a[sortValues[0]];
         });
       }
     }
@@ -74,45 +72,47 @@ function BookList() {
     <>
       <div className="main_page">
         <h1>Список книг</h1>
-        <div className="sort">
-          Сортировать по
-          <select
-            onChange={(e) => sort(e.target.value)}
-            className="custom-select"
-          >
-            <option selected={sortBy === "book_name ↓"} value="book_name ↓">
-              Названию ↓
-            </option>
-            <option selected={sortBy === "book_name ↑"} value="book_name ↑">
-              Названию ↑
-            </option>
-            <option selected={sortBy === "autors ↓"} value="autors ↓">
-              Автору ↓
-            </option>
-            <option selected={sortBy === "autors ↑"} value="autors ↑">
-              Автору ↑
-            </option>
-            <option
-              selected={sortBy === "year_of_publishing ↓"}
-              value="year_of_publishing ↓"
+        <div className="row auto-content-center align-items-center sort">
+          <div className="col-md-auto">Сортировать по</div>
+          <div className="col-md-auto">
+            <select
+              onChange={(e) => sort(e.target.value)}
+              className="custom-select"
             >
-              Дате публикации ↓
-            </option>
-            <option
-              selected={sortBy === "year_of_publishing ↑"}
-              value="year_of_publishing ↑"
-            >
-              Дате публикации ↑
-            </option>
-          </select>
+              <option selected={sortBy === "book_name ↓"} value="book_name ↓">
+                Названию ↓
+              </option>
+              <option selected={sortBy === "book_name ↑"} value="book_name ↑">
+                Названию ↑
+              </option>
+              <option selected={sortBy === "autors ↓"} value="autors ↓">
+                Автору ↓
+              </option>
+              <option selected={sortBy === "autors ↑"} value="autors ↑">
+                Автору ↑
+              </option>
+              <option
+                selected={sortBy === "year_of_publishing ↓"}
+                value="year_of_publishing ↓"
+              >
+                Дате публикации ↓
+              </option>
+              <option
+                selected={sortBy === "year_of_publishing ↑"}
+                value="year_of_publishing ↑"
+              >
+                Дате публикации ↑
+              </option>
+            </select>
+          </div>
         </div>
-        
+
         <div className="card_list">
           {books.map((book) => {
             return (
               <div key={book.id} id={book.id} className="book_card">
-                <div className="row">
-                  <div className="col-md-4">
+                <div className="row align-items-center">
+                  <div className="col-md-5">
                     <div className="image_container">
                       <img
                         src={book.book_image}
@@ -123,7 +123,7 @@ function BookList() {
                       />
                     </div>
                   </div>
-                  <div className="col-md-8">
+                  <div className="col-md-7">
                     <span>
                       <b>Книга:</b> {book.book_name}
                     </span>
@@ -144,20 +144,22 @@ function BookList() {
                       <b>Год издания:</b> {book.year_of_publishing}
                     </span>
                     <br />
-                    <button
-                      onClick={() => history.push(`/edit_book${book.id}`)}
-                      className="btn btn-outline-warning"
-                    >
-                      Изменть
-                    </button>
-                    <button
-                      onClick={() => {
-                        deleteBook(book.id);
-                      }}
-                      className="btn btn-outline-danger"
-                    >
-                      Удалить
-                    </button>
+                    <div className="card_buttons">
+                      <button
+                        onClick={() => history.push(`/edit_book${book.id}`)}
+                        className="btn btn-outline-warning"
+                      >
+                        Изменть
+                      </button>
+                      <button
+                        onClick={() => {
+                          deleteBook(book.id);
+                        }}
+                        className="btn btn-outline-danger"
+                      >
+                        Удалить
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

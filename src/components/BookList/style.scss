@@ -1,9 +1,15 @@
 .main_page {
+  .sort{
+    margin-bottom: 1rem;
+    margin-left: 6rem;
+  }
   .card_list {
     height: 77vh;
     overflow: scroll;
     background: rgba(0, 0, 0, 0.705);
     border-radius: 3px;
+    border: 6px solid rgba(0, 0, 0, 0);
+    margin: 0 5rem;
     .book_card {
       background: white;
       margin: 1rem;
@@ -19,6 +25,12 @@
           margin: .5rem auto;
           overflow: hidden;
           box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+      }
+      .card_buttons{
+        padding: 2rem 0;
+        button{
+          margin-right: 1rem;
         }
       }
     }

@@ -9,10 +9,11 @@ function Header() {
         <div className="col lg-6">
           <div className="title">Редактор книг</div>
         </div>
-        <div className="col lg-6 ">
+        <div className="col lg-6 button-block">
+          <div id="row justify-content-center"></div>
           <Route exact path="/">
             <Link
-              className="btn btn-primary btn-sm add_book_botton"
+              className="btn btn-primary btn-sm header_botton"
               to="/add_book"
             >
               Добавить книгу
@@ -20,13 +21,13 @@ function Header() {
           </Route>
 
           <Route exact path="/add_book">
-            <Link className="btn btn-primary btn-sm add_book_botton" to="/">
+            <Link className="btn btn-primary btn-sm header_botton" to="/">
               Список книг
             </Link>
           </Route>
 
           <Route exact path="/edit_book:id">
-            <Link className="btn btn-primary btn-sm add_book_botton" to="/">
+            <Link className="btn btn-primary btn-sm header_botton" to="/">
               Назад
             </Link>
           </Route>

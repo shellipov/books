@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import book from "../../images/book.jpg";
 import Modal from "../Modal";
 import "./style.scss";
@@ -25,9 +25,11 @@ function AddBook() {
   const [error, setError] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [isImageLoad, setIsImageLoad] = useState(false);
+  const autorInput = useRef(null);
 
   function changeInputValue({ target: { name, value } }) {
     setError(null);
+    autorInput.current.setCustomValidity("");
     setInputs({ ...inputs, [name]: value });
   }
 
@@ -35,13 +37,15 @@ function AddBook() {
     e.preventDefault();
     let errors = 0;
 
-    if (inputs.autors.split(' ').length%2 !== 0) {
+    if (inputs.autors.split(" ").length % 2 !== 0) {
       errors++;
+      autorInput.current.setCustomValidity("Введите Имя и Фамилю автора через пробел");
       setError("Введите Имя и Фамилю автора через пробел");
     }
 
-    if (inputs.autors.split(' ').find(word => word.length > 20)) {
+    if (inputs.autors.split(" ").find((word) => word.length > 20)) {
       errors++;
+      autorInput.current.setCustomValidity("Имя или Фамилия не должны быть длиннее 20 символов")
       setError("Имя или Фамилия не должны быть длиннее 20 символов");
     }
 
@@ -81,7 +85,7 @@ function AddBook() {
               name="book_name"
               onChange={(e) => changeInputValue(e)}
               value={book_name}
-              maxlength={30}
+              maxLength={30}
             />
           </label>
 
@@ -95,6 +99,7 @@ function AddBook() {
               name="autors"
               onChange={(e) => changeInputValue(e)}
               value={autors}
+              ref={autorInput}
             />
           </label>
 
@@ -123,7 +128,7 @@ function AddBook() {
               name="publisher_name"
               onChange={(e) => changeInputValue(e)}
               value={publisher_name}
-              maxlength={30}
+              maxLength={30}
             />
           </label>
 
@@ -142,21 +147,22 @@ function AddBook() {
             />
           </label>
 
-          <label>
-            Обложка
-            <input
-              required
-              className="form-control form-control-sm"
-              placeholder="Например: https://html5book.ru/wp-content/uploads/2017/05/krasivaya_forma_html.jpg"
-              type="text"
-              name="book_image"
-              onChange={(e) => changeInputValue(e)}
-              value={book_image}
-            />
-          </label>
-
-          <div className="row justifu-content-center align-items-center">
-            <div className="col-md-4">
+          <div className="row justify-content-center align-items-center">
+            <div className="col-md-10">
+              <label>
+                Обложка
+                <input
+                  required
+                  className="form-control form-control-sm"
+                  placeholder="Например: https://html5book.ru/wp-content/uploads/2017/05/krasivaya_forma_html.jpg"
+                  type="text"
+                  name="book_image"
+                  onChange={(e) => changeInputValue(e)}
+                  value={book_image}
+                />
+              </label>
+            </div>
+            <div className="col-md-2">
               {isImageLoad ? (
                 <>
                   <img className="book" src={book_image} alt="book_image" />
@@ -167,7 +173,10 @@ function AddBook() {
                 </>
               )}
             </div>
-            <div className="col-md-8">
+          </div>
+
+          <div className="row justify-content-center align-items-center">
+            <div className="col-md-12">
               <button type="submit" className="btn btn-success">
                 Добавить
               </button>

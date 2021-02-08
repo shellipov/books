@@ -77,7 +77,7 @@ function EditBook() {
       )}
       <div className="add_book_page">
         <h1>Редактор книг</h1>
-        <span>Книга - {id}</span>
+        <span className="book_id">Книга - {id}</span>
         <form onSubmit={handleSubmit} className="add_book_form">
           <label>
             Название книги
