@@ -153,7 +153,7 @@ function BookList() {
                     <div className="card_buttons">
                       <button
                         onClick={() => history.push(`/edit_book${book.id}`)}
-                        className="btn btn-outline-warning"
+                        className="btn btn-outline-info"
                       >
                         Редактировать
                       </button>
