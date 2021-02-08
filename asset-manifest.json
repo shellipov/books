@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/kaspersky/static/css/main.10766b56.chunk.css",
-    "main.js": "/kaspersky/static/js/main.475f34b3.chunk.js",
-    "main.js.map": "/kaspersky/static/js/main.475f34b3.chunk.js.map",
+    "main.css": "/kaspersky/static/css/main.a332ec62.chunk.css",
+    "main.js": "/kaspersky/static/js/main.02bbe880.chunk.js",
+    "main.js.map": "/kaspersky/static/js/main.02bbe880.chunk.js.map",
     "runtime-main.js": "/kaspersky/static/js/runtime-main.c3fc6135.js",
     "runtime-main.js.map": "/kaspersky/static/js/runtime-main.c3fc6135.js.map",
     "static/js/2.77319017.chunk.js": "/kaspersky/static/js/2.77319017.chunk.js",
     "static/js/2.77319017.chunk.js.map": "/kaspersky/static/js/2.77319017.chunk.js.map",
     "index.html": "/kaspersky/index.html",
-    "static/css/main.10766b56.chunk.css.map": "/kaspersky/static/css/main.10766b56.chunk.css.map",
+    "static/css/main.a332ec62.chunk.css.map": "/kaspersky/static/css/main.a332ec62.chunk.css.map",
     "static/js/2.77319017.chunk.js.LICENSE.txt": "/kaspersky/static/js/2.77319017.chunk.js.LICENSE.txt",
     "static/media/main.scss": "/kaspersky/static/media/background.cdcb6102.jpg",
     "static/media/book.55abcabb.jpg": "/kaspersky/static/media/book.55abcabb.jpg"
@@ -16,7 +16,7 @@
   "entrypoints": [
     "static/js/runtime-main.c3fc6135.js",
     "static/js/2.77319017.chunk.js",
-    "static/css/main.10766b56.chunk.css",
-    "static/js/main.475f34b3.chunk.js"
+    "static/css/main.a332ec62.chunk.css",
+    "static/js/main.02bbe880.chunk.js"
   ]
 }
