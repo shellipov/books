@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import book from "../../images/book.jpg";
 import Modal from "../Modal";
 import "./style.scss";
@@ -25,11 +25,9 @@ function AddBook() {
   const [error, setError] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [isImageLoad, setIsImageLoad] = useState(false);
-  const autorInput = useRef(null);
 
   function changeInputValue({ target: { name, value } }) {
     setError(null);
-    autorInput.current.setCustomValidity("");
     setInputs({ ...inputs, [name]: value });
   }
 
@@ -39,14 +37,12 @@ function AddBook() {
 
     if (inputs.autors.split(" ").length % 2 !== 0) {
       errors++;
-      autorInput.current.setCustomValidity("Введите Имя и Фамилю автора через пробел");
-      setError("Введите Имя и Фамилю автора через пробел");
+      setError("Введите Имя и Фамилию автора через пробел");
     }
 
     if (inputs.autors.split(" ").find((word) => word.length > 20)) {
       errors++;
-      autorInput.current.setCustomValidity("Имя или Фамилия не должны быть длиннее 20 символов")
-      setError("Имя или Фамилия не должны быть длиннее 20 символов");
+      setError("Имя или Фамилия должны быть не длиннее 20 символов");
     }
 
     if (errors === 0) {
@@ -99,8 +95,8 @@ function AddBook() {
               name="autors"
               onChange={(e) => changeInputValue(e)}
               value={autors}
-              ref={autorInput}
             />
+            {error && <span className="error">Ошибка: {error}</span>}
           </label>
 
           <label>
@@ -160,6 +156,9 @@ function AddBook() {
                   onChange={(e) => changeInputValue(e)}
                   value={book_image}
                 />
+                <span className="description">
+                  Найдите подходящую картинку в интернете и вставте её url{" "}
+                </span>
               </label>
             </div>
             <div className="col-md-2">
@@ -182,8 +181,6 @@ function AddBook() {
               </button>
             </div>
           </div>
-
-          {error && <p className="error">Ошибка: {error}</p>}
         </form>
         <img
           onLoad={() => setIsImageLoad(true)}

@@ -9,6 +9,11 @@
     label{
       display: flex;
       flex-direction: column;
+      .error{
+        font-size: small;
+        color:red;
+        margin-left: 1rem;
+      }
     }
     input{
       margin: 0.2rem
@@ -16,6 +21,11 @@
     img{
       display: block;
       width: 10vh;
+    }
+    .description{
+      font-size: small;
+      color:gray;
+      margin-left: 1rem;
     }
   }
 }

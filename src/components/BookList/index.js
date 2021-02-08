@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
+import book from '../../images/book.jpg';
+import startBooks from "../../constants"
 import "./style.scss";
 
 function BookList() {
   const history = useHistory();
+  const bookImage = useRef(null);
   const [books, setBooks] = useState(
     JSON.parse(window.localStorage.getItem("books"))
       ? JSON.parse(window.localStorage.getItem("books"))
@@ -64,9 +67,21 @@ function BookList() {
     setBooks(sortBooksList);
   }
 
-  useEffect(() => {
-    sort(sortBy);
-  }, [sortBy]);
+  function getImage(img){
+    img.src=book;
+  }
+
+  useEffect(() => {    
+    const start = JSON.parse(window.localStorage.getItem("start"));
+  if (!start) {
+    window.localStorage.setItem("start", JSON.stringify(true));
+    window.localStorage.setItem(
+      "books",
+      JSON.stringify(startBooks)
+    );
+    console.log('lalala');
+    setBooks(startBooks)
+  }},[startBooks])
 
   return (
     <>
@@ -117,8 +132,9 @@ function BookList() {
                       <img
                         src={book.book_image}
                         alt="book_image"
-                        onError={() =>
-                          console.log(`${book.book_name} не загружается`)
+                        ref={bookImage}
+                        onError={(e) =>
+                          getImage(e.target)
                         }
                       />
                     </div>
@@ -149,7 +165,7 @@ function BookList() {
                         onClick={() => history.push(`/edit_book${book.id}`)}
                         className="btn btn-outline-warning"
                       >
-                        Изменть
+                        Изменить
                       </button>
                       <button
                         onClick={() => {
