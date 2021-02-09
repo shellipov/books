@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/kaspersky/static/css/main.2726b880.chunk.css",
-    "main.js": "/kaspersky/static/js/main.3d402e01.chunk.js",
-    "main.js.map": "/kaspersky/static/js/main.3d402e01.chunk.js.map",
+    "main.css": "/kaspersky/static/css/main.730792de.chunk.css",
+    "main.js": "/kaspersky/static/js/main.115e7dbe.chunk.js",
+    "main.js.map": "/kaspersky/static/js/main.115e7dbe.chunk.js.map",
     "runtime-main.js": "/kaspersky/static/js/runtime-main.c3fc6135.js",
     "runtime-main.js.map": "/kaspersky/static/js/runtime-main.c3fc6135.js.map",
-    "static/js/2.77319017.chunk.js": "/kaspersky/static/js/2.77319017.chunk.js",
-    "static/js/2.77319017.chunk.js.map": "/kaspersky/static/js/2.77319017.chunk.js.map",
+    "static/js/2.e58aa2e8.chunk.js": "/kaspersky/static/js/2.e58aa2e8.chunk.js",
+    "static/js/2.e58aa2e8.chunk.js.map": "/kaspersky/static/js/2.e58aa2e8.chunk.js.map",
     "index.html": "/kaspersky/index.html",
-    "static/css/main.2726b880.chunk.css.map": "/kaspersky/static/css/main.2726b880.chunk.css.map",
-    "static/js/2.77319017.chunk.js.LICENSE.txt": "/kaspersky/static/js/2.77319017.chunk.js.LICENSE.txt",
+    "static/css/main.730792de.chunk.css.map": "/kaspersky/static/css/main.730792de.chunk.css.map",
+    "static/js/2.e58aa2e8.chunk.js.LICENSE.txt": "/kaspersky/static/js/2.e58aa2e8.chunk.js.LICENSE.txt",
+    "static/media/add_image.e9c486cb.mp4": "/kaspersky/static/media/add_image.e9c486cb.mp4",
     "static/media/main.scss": "/kaspersky/static/media/background.cdcb6102.jpg",
     "static/media/book.55abcabb.jpg": "/kaspersky/static/media/book.55abcabb.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.c3fc6135.js",
-    "static/js/2.77319017.chunk.js",
-    "static/css/main.2726b880.chunk.css",
-    "static/js/main.3d402e01.chunk.js"
+    "static/js/2.e58aa2e8.chunk.js",
+    "static/css/main.730792de.chunk.css",
+    "static/js/main.115e7dbe.chunk.js"
   ]
 }
