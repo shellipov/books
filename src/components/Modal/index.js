@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import ReactDom from "react-dom";
 import {useHistory} from 'react-router-dom';
 import "./style.scss";
@@ -6,19 +6,28 @@ import "./style.scss";
 function Modal({ setModalVisible, message }) {
 
   const history = useHistory();
+  const modalWindow = useRef(null)
 
   function close() {
-    setModalVisible(false);
+    modalWindow.current.classList.remove("animate__zoomIn");
+    modalWindow.current.classList.add("animate__zoomOut");
+    setTimeout(() =>{
+      setModalVisible(false);
+    },350)
   }
 
   function toBookList() {
-    history.push('/')
+    modalWindow.current.classList.remove("animate__zoomIn");
+    modalWindow.current.classList.add("animate__zoomOut");
+    setTimeout(() =>{
+      history.push('/')
+    },350)
+    
   }
-
   return ReactDom.createPortal(
     <>
       <div className="modal_background">
-        <div className="modal_window">
+        <div ref={modalWindow} className="modal_window animate__animated animate__zoomIn">
 
           <div className="row justify-content-center ">
             <h2 className="massage">{message}</h2>

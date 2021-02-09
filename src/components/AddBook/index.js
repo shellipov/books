@@ -69,7 +69,7 @@ function AddBook() {
         />
       )}
       <div className="add_book_page">
-        <h1>Новая книга</h1>
+        <h1 className="animate__animated animate__slideInDown">Новая книга</h1>
         <form onSubmit={handleSubmit} className="add_book_form">
           <label>
             Название книги

@@ -75,8 +75,7 @@ function EditBook() {
         />
       )}
       <div className="add_book_page">
-        <h1>Редакторовать</h1>
-        {/* <span className="book_id">Книга - {id}</span> */}
+        <h1 className="animate__animated animate__slideInDown">Редакторовать</h1>
         <form onSubmit={handleSubmit} className="add_book_form">
           <label>
             Название книги

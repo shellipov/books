@@ -84,7 +84,7 @@ function BookList() {
   return (
     <>
       <div className="main_page">
-        <h1>Список книг</h1>
+        <h1 className="animate__animated animate__slideInDown">Список книг</h1>
         <div className="row auto-content-center align-items-center sort">
           <div className="col-md-auto">Сортировать по</div>
           <div className="col-md-auto">
@@ -110,11 +110,6 @@ function BookList() {
                 <div className="row align-items-center">
                   <div className="col-md-5">
                     <div className="image_container">
-                      {/* <img
-                        src={book.book_image}
-                        alt="book_image"
-                        onError={(e) => getImage(e.target)}
-                      /> */}
                       <a
                         className="customer fansy_link"
                         data-fancybox="gallery"
