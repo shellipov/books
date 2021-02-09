@@ -13,7 +13,7 @@ function Modal({ setModalVisible, message }) {
     modalWindow.current.classList.add("animate__zoomOut");
     setTimeout(() =>{
       setModalVisible(false);
-    },350)
+    },220)
   }
 
   function toBookList() {
@@ -21,7 +21,7 @@ function Modal({ setModalVisible, message }) {
     modalWindow.current.classList.add("animate__zoomOut");
     setTimeout(() =>{
       history.push('/')
-    },350)
+    },220)
     
   }
   return ReactDom.createPortal(

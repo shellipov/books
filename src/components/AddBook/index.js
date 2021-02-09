@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import book from "../../images/book.jpg";
+import video from "../../video/add_image.mp4";
 import Modal from "../Modal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+
 import "./style.scss";
 
 function AddBook() {
@@ -157,7 +161,14 @@ function AddBook() {
                   value={book_image}
                 />
                 <span className="description">
-                  Найдите подходящую картинку в интернете и вставте её url{" "}
+                  Найдите подходящую картинку в интернете и вставте её url{" "}  
+                  <a
+                        className="customer fansy_link"
+                        data-fancybox="gallery"
+                        href={video}>
+
+                  <FontAwesomeIcon icon={faQuestionCircle} />
+                        </a>
                 </span>
               </label>
             </div>
