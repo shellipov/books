@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/kaspersky/static/css/main.730792de.chunk.css",
-    "main.js": "/kaspersky/static/js/main.115e7dbe.chunk.js",
-    "main.js.map": "/kaspersky/static/js/main.115e7dbe.chunk.js.map",
+    "main.js": "/kaspersky/static/js/main.fee4412b.chunk.js",
+    "main.js.map": "/kaspersky/static/js/main.fee4412b.chunk.js.map",
     "runtime-main.js": "/kaspersky/static/js/runtime-main.c3fc6135.js",
     "runtime-main.js.map": "/kaspersky/static/js/runtime-main.c3fc6135.js.map",
     "static/js/2.e58aa2e8.chunk.js": "/kaspersky/static/js/2.e58aa2e8.chunk.js",
@@ -10,6 +10,7 @@
     "index.html": "/kaspersky/index.html",
     "static/css/main.730792de.chunk.css.map": "/kaspersky/static/css/main.730792de.chunk.css.map",
     "static/js/2.e58aa2e8.chunk.js.LICENSE.txt": "/kaspersky/static/js/2.e58aa2e8.chunk.js.LICENSE.txt",
+    "static/media/about.4d4d16b6.pdf": "/kaspersky/static/media/about.4d4d16b6.pdf",
     "static/media/add_image.e9c486cb.mp4": "/kaspersky/static/media/add_image.e9c486cb.mp4",
     "static/media/main.scss": "/kaspersky/static/media/background.cdcb6102.jpg",
     "static/media/book.55abcabb.jpg": "/kaspersky/static/media/book.55abcabb.jpg"
@@ -18,6 +19,6 @@
     "static/js/runtime-main.c3fc6135.js",
     "static/js/2.e58aa2e8.chunk.js",
     "static/css/main.730792de.chunk.css",
-    "static/js/main.115e7dbe.chunk.js"
+    "static/js/main.fee4412b.chunk.js"
   ]
 }
