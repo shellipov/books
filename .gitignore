@@ -106,5 +106,6 @@ dist
 # production
 /build
 build
+.build
 build/*
 /yarn.lock

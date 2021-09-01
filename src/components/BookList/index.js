@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import book from "../../images/book.jpg";
 import startBooks from "../../constants";
+import Button from '../IU/Button/Button'
 import "./style.scss";
 
 function BookList() {
@@ -146,20 +147,20 @@ function BookList() {
                     </span>
                     <br />
                     <div className="card_buttons">
-                      <button
+                      <Button
                         onClick={() => history.push(`/edit_book${book.id}`)}
-                        className="btn btn-outline-info"
+                        color="blue"
                       >
                         Редактировать
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={() => {
                           deleteBook(book.id);
                         }}
-                        className="btn btn-outline-danger"
+                        color="red"
                       >
                         Удалить
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>

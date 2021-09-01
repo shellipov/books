@@ -1,6 +1,5 @@
 @import "reset";
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import './variables.scss';
 
 
 body {
@@ -34,9 +33,10 @@ body {
     background-color: rgba(255, 255, 255, 0.671);
     height: 100vh;
     h1{
-      padding: 5rem 0 .3rem;
+      padding: 8rem 0 .5rem;
       text-align: center;
-      font-family: 'Rubik Mono One', sans-serif;
+      font-size: 35px;
+      font-family: $SecondaryFont;
       color: rgb(48, 42, 45);
     }
   }

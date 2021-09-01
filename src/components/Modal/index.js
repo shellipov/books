@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import ReactDom from "react-dom";
 import {useHistory} from 'react-router-dom';
+import Button from "../IU/Button/Button";
 import "./style.scss";
 
 function Modal({ setModalVisible, message }) {
@@ -30,25 +31,21 @@ function Modal({ setModalVisible, message }) {
         <div ref={modalWindow} className="modal_window animate__animated animate__zoomIn">
 
           <div className="row justify-content-center ">
-            <h2 className="massage">{message}</h2>
+            <h3 className="massage">{message}</h3>
           </div>
 
           <div className="row justify-content-center">
-            <button
-              className="btn btn-primary btn-sm add_book_botton"
-              type="button"
+            <Button
               onClick={close}
             >
-              OK
-            </button>
+              Ok
+            </Button>
 
-            <button
-              className="btn btn-primary btn-sm add_book_botton"
-              type="button"
+            <Button
               onClick={toBookList}
             >
               К списку книг
-            </button>
+            </Button>
 
           </div>
         </div>

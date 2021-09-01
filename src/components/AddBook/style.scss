@@ -1,37 +1,33 @@
-.add_book_page{
+.add_book_page {
   .add_book_form {
     display: flex;
     flex-direction: column;
     padding: 1.5rem 5rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     background: white;
     margin: 0 5rem;
-    label{
-      display: flex;
-      flex-direction: column;
-      .error{
+    label {
+      .error {
         font-size: small;
-        color:red;
+        color: red;
         margin-left: 1rem;
       }
     }
-    input{
-      margin: 0.2rem
-    }
-    img{
+
+    img {
       display: block;
       width: 10vh;
     }
-    .description{
+    .description {
       font-size: small;
-      color:gray;
+      color: gray;
       margin-left: 1rem;
     }
   }
 }
 
 @media screen and (max-width: 767px) {
-  .add_book_form{
+  .add_book_form {
     margin: 0 1rem !important;
     padding: 1.5rem 1rem 4rem !important;
   }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import book from "../../images/book.jpg";
-
 import Modal from "../Modal";
 import { useParams } from "react-router-dom";
+import Input from "../IU/Input/Input";
+import Button from "../IU/Button/Button";
 import "./style.scss";
 
 function EditBook() {
@@ -75,115 +76,87 @@ function EditBook() {
         />
       )}
       <div className="add_book_page">
-        <h1 className="animate__animated animate__slideInDown">Редакторовать</h1>
+        <h1 className="animate__animated animate__slideInDown">
+          Редакторовать
+        </h1>
         <form onSubmit={handleSubmit} className="add_book_form">
-          <label>
-            Название книги
-            <input
-              required
-              className="form-control form-control-sm"
-              placeholder="Например: Война и мир"
-              type="text"
-              name="book_name"
-              onChange={(e) => changeInputValue(e)}
-              value={book_name}
-              maxLength={30}
-            />
-          </label>
+          <Input
+            label="Название книги"
+            placeholder="Например: Война и мир"
+            type="text"
+            name="book_name"
+            onChange={(e) => changeInputValue(e)}
+            value={book_name}
+            maxLength={30}
+          />
 
-          <label>
-            Автор книги
-            <input
-              required
-              className="form-control form-control-sm"
-              placeholder="Например: Лев Толстой (Если авторов несколько, введите их через запятую)"
-              type="text"
-              name="autors"
-              onChange={(e) => changeInputValue(e)}
-              value={autors}
-            />
+          <Input
+            label="Автор книги"
+            placeholder="Например: Лев Толстой (Если авторов несколько, введите их через запятую)"
+            type="text"
+            name="autors"
+            onChange={(e) => changeInputValue(e)}
+            value={autors}
+          >
             {error && <span className="error">Ошибка: {error}</span>}
-          </label>
+          </Input>
 
-          <label>
-            Количесво страниц
-            <input
-              required
-              className="form-control form-control-sm"
-              placeholder="Например: 850"
-              type="number"
-              name="page_number"
-              onChange={(e) => changeInputValue(e)}
-              value={page_number}
-              min={1}
-              max={10000}
-            />
-          </label>
+          <Input
+            label="Количесво страниц"
+            placeholder="Например: 850"
+            type="number"
+            name="page_number"
+            onChange={(e) => changeInputValue(e)}
+            value={page_number}
+            min={1}
+            max={10000}
+          />
 
-          <label>
-            Название издательства
-            <input
-              required
-              className="form-control form-control-sm"
-              placeholder="Например: Просвещение"
-              type="text"
-              name="publisher_name"
-              onChange={(e) => changeInputValue(e)}
-              value={publisher_name}
-              maxLength={30}
-            />
-          </label>
+          <Input
+            label="Название издательства"
+            placeholder="Например: Просвещение"
+            type="text"
+            name="publisher_name"
+            onChange={(e) => changeInputValue(e)}
+            value={publisher_name}
+            maxLength={30}
+          />
 
-          <label>
-            Год издательства
-            <input
-              required
-              className="form-control form-control-sm"
-              placeholder="Например: 1920"
-              type="number"
-              name="year_of_publishing"
-              onChange={(e) => changeInputValue(e)}
-              value={year_of_publishing}
-              min={1800}
-              max={year}
-            />
-          </label>
+          <Input
+            label="Год издательства"
+            placeholder="Например: 1920"
+            type="number"
+            name="year_of_publishing"
+            onChange={(e) => changeInputValue(e)}
+            value={year_of_publishing}
+            min={1800}
+            max={year}
+          />
 
           <div className="row justify-content-center align-items-center">
             <div className="col-md-10">
-              <label>
-                Обложка
-                <input
-                  required
-                  className="form-control form-control-sm"
-                  placeholder="Например: https://html5book.ru/wp-content/uploads/2017/05/krasivaya_forma_html.jpg"
-                  type="text"
-                  name="book_image"
-                  onChange={(e) => changeInputValue(e)}
-                  value={book_image}
-                />
+              <Input
+                label="Обложка"
+                placeholder="Например: https://html5book.ru/wp-content/uploads/2017/05/krasivaya_forma_html.jpg"
+                type="text"
+                name="book_image"
+                onChange={(e) => changeInputValue(e)}
+                value={book_image}
+              >
                 <span className="description">
                   Найдите подходящую картинку в интернете и вставте её url{" "}
                 </span>
-              </label>
+              </Input>
             </div>
             <div className="col-md-2">
-              {isImageLoad ? (
-                <>
-                  <img className="book" src={book_image} alt="book_image" />
-                </>
-              ) : (
-                <>
-                  <img className="book" src={book} alt="book_image" />
-                </>
-              )}
+            <img className="book" src={ isImageLoad? book_image : book} alt="book_image" />
             </div>
           </div>
 
           <div className="row justify-content-center align-items-center">
-              <button type="submit" className="btn btn-success">
-                Сохранить
-              </button>
+            <Button type="submit" color="blue">
+              Сохранить
+            </Button>
           </div>
         </form>
         <img

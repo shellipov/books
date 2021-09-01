@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 footer {
   background: #1a1616;  
   width: 100%;
@@ -6,7 +8,8 @@ footer {
   bottom: 0;
   .title {
     text-align: center;
-    font-family: 'Amatic SC', cursive;
-    font-size: 25px
+    font-family: $PrimaryFont;
+    font-size: 15px;
+    margin: .5rem
   }
 }
