@@ -36,7 +36,7 @@ function BookList() {
 
   useEffect(() => {
     firstStart(setBooks);
-    sortBooks(sortType);
+    // sortBooks(sortType);
   }, []);
 
   function deleteBook(id) {
