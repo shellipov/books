@@ -12,7 +12,6 @@ function App() {
   return (
     <>
       <Router>
-
         <Header />
         <section className="container">
           <Switch>

@@ -1,66 +1,70 @@
 import React, { useState, useEffect } from "react";
-import book from "../../images/book.jpg";
-import { startBooks } from "../../constants";
-import Sort from "../Sort/Sort";
 import Bookcard from "../BookCard/Bookcard";
-import "./style.scss";
+import Select from "../IU/Select/Select";
+import firstStart from "../../functions/firstStart";
+import { initialBooks, initialSortType, sortData } from "../../constants";
+import styles from "./styles.module.scss";
 
 function BookList() {
-  const [books, setBooks] = useState(
-    JSON.parse(window.localStorage.getItem("books"))
-      ? JSON.parse(window.localStorage.getItem("books"))
-      : startBooks
-  );
-  const [sortBy, setSortBy] = useState(
-    JSON.parse(window.localStorage.getItem("sort_type"))
-      ? JSON.parse(window.localStorage.getItem("sort_type"))
-      : "book_name ↓"
-  );
+  const [books, setBooks] = useState(initialBooks);
+  const [sortType, setSortType] = useState(initialSortType);
+  const [searchData, setSearchData] = useState("");
+  const sortedBooks =  [...books].sort((a, b) => sortType.direction === "up" ? b[sortType.type].localeCompare(a[sortType.type]) : a[sortType.type].localeCompare(b[sortType.type]))
+    
+  useEffect(() => {
+    firstStart(setBooks);
+    sortBooks(sortType);
+  }, []);
 
   function deleteBook(id) {
-    const bookToBeDeleted = books.find((book) => book.id === id);
-    const bookIndex = books.indexOf(bookToBeDeleted);
-    const newBookList = [...books];
-    newBookList.splice(bookIndex, 1);
+    const newBookList = books.filter((book) => book.id !== id);
     window.localStorage.setItem("books", JSON.stringify(newBookList));
     setBooks(newBookList);
   }
 
-  function getImage(img) {
-    img.src = book;
-  }
+  const sortBooks = (sort) => {
+    window.localStorage.setItem("sort_type", JSON.stringify(sort));
 
-  useEffect(() => {
-    const start = JSON.parse(window.localStorage.getItem("start"));
-    if (!start) {
-      window.localStorage.setItem("start", JSON.stringify(true));
-      window.localStorage.setItem("books", JSON.stringify(startBooks));
-      setBooks(startBooks);
-    }
-  }, []);
+    setSortType(sort);
+    setBooks(
+      [...books].sort((a, b) =>
+        sort.direction === "up"
+          ? b[sort.type].localeCompare(a[sort.type])
+          : a[sort.type].localeCompare(b[sort.type])
+      )
+    );
+  };
+
+  const search = (e) => {
+    setSearchData(e.target.value);
+  };
 
   return (
     <>
-      <div className="main_page">
-        <h1 className="animate__animated animate__slideInDown">Список книг</h1>
-        <Sort
-          setSortBy={setSortBy}
-          sortBy={sortBy}
-          books={books}
-          setBooks={setBooks}
-        />
-        <div className="card_list">
-          {books.map((book) => {
-            return (
-              <Bookcard
-                key={book.id}
-                book={book}
-                getImage={getImage}
-                deleteBook={deleteBook}
-              />
-            );
-          })}
+      <h1 className="animate__animated animate__slideInDown">Список книг</h1>
+      <div className={styles.buttons_block}>
+        <div className={styles.sort_block}>
+          <div className={styles.text}>Сортировать по</div>
+          <Select
+            defaultValue="Сортировка"
+            options={sortData}
+            value={sortType}
+            onChange={sortBooks}
+          />
         </div>
+        <div className={styles.search_block}>
+          <input
+            className={styles.sort_input}
+            placeholder={"Поиск"}
+            value={searchData}
+            onChange={search}
+          ></input>
+        </div>
+      </div>
+      <div className={styles.card_list}>
+        {books.map((book) => {
+          return <Bookcard key={book.id} book={book} deleteBook={deleteBook} />;
+        })}
       </div>
     </>
   );

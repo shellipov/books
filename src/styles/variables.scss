@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
 
 //Fonts
-$PrimaryFont : 'Comfortaa', cursive;
-$SecondaryFont : 'Rubik Mono One', sans-serif;
-
+$PrimaryFont: "Comfortaa", cursive;
+$SecondaryFont: "Rubik Mono One", sans-serif;
 
 //Colors
 $Red: rgb(199, 0, 0);
 $Blue: rgb(34, 119, 168);
+
+//Heights
+$HeaderHeight: 62px;
+$HeaderHeight: 31px;

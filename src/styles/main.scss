@@ -3,7 +3,6 @@
 
 
 body {
-  height: 100vh;
   line-height: 1;
   &:before {
     content: "";
@@ -31,12 +30,13 @@ body {
     filter: blur(6px);
   }
 
-  section {
-    height: calc(100vh - 78px);
+  .container {
+    margin-top: 62px;
+    height: calc(100vh -  62px - 31px);
     background-color: rgba(255, 255, 255, 0.671);
-    height: 100vh;
     h1{
-      padding: 8rem 0 .5rem;
+      padding: 2rem 0 .5rem;
+      margin-bottom: 0;
       text-align: center;
       font-size: 35px;
       font-family: $SecondaryFont;

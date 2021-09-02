@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 
 const Sort = ({ setSortBy, sortBy, books, setBooks }) => {
+
   function sort(sort_type) {
     setSortBy(sort_type);
     const sortValues = sort_type.split(" ");
