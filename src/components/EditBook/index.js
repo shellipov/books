@@ -4,19 +4,14 @@ import Modal from "../Modal";
 import { useParams } from "react-router-dom";
 import Input from "../IU/Input/Input";
 import Button from "../IU/Button/Button";
+import { initialInputs } from "../../constants";
+
 import "./style.scss";
 
 function EditBook() {
   const { id } = useParams();
 
-  const [inputs, setInputs] = useState({
-    book_name: "",
-    autors: "",
-    page_number: "",
-    publisher_name: "",
-    year_of_publishing: "",
-    book_image: "",
-  });
+  const [inputs, setInputs] = useState({ initialInputs });
 
   const {
     book_name,
@@ -149,7 +144,11 @@ function EditBook() {
               </Input>
             </div>
             <div className="col-md-2">
-            <img className="book" src={ isImageLoad? book_image : book} alt="book_image" />
+              <img
+                className="book"
+                src={isImageLoad ? book_image : book}
+                alt="book_image"
+              />
             </div>
           </div>
 

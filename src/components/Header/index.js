@@ -13,19 +13,19 @@ function Header() {
         <div className="col lg-6 button-block">
           <div id="row justify-content-center"></div>
           <Route exact path="/">
-            <UILink  to="/add_book">
+            <UILink type="button" to="/add_book">
               Добавить книгу
             </UILink>
           </Route>
 
           <Route exact path="/add_book">
-            <UILink uitype="botton" to="/">
+            <UILink type="button" to="/">
               Список книг
             </UILink>
           </Route>
 
           <Route exact path="/edit_book:id">
-            <UILink uitype="botton" to="/">
+            <UILink type="button" to="/">
               Назад
             </UILink>
           </Route>

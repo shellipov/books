@@ -8,7 +8,7 @@ function Footer() {
       <div className="row justify-content-center align-items-center">
         <div className="col lg-auto">
           <div className="title">
-            <a href={pdf} className="download_button" target="_blank" rel="noreferrer">
+            <a href={pdf} className="primary_link" target="_blank" rel="noreferrer">
             О программе
             </a>
           </div>

@@ -1,4 +1,4 @@
-const startBooks = [
+export const startBooks = [
   {
     autors: "Рей Брэдбери",
     book_image:
@@ -31,5 +31,13 @@ const startBooks = [
   },
 ];
 
-export default startBooks
+export const initialInputs = {
+  book_name: "",
+  autors: "",
+  page_number: "",
+  publisher_name: "",
+  year_of_publishing: "",
+  book_image: "",
+}
+
 

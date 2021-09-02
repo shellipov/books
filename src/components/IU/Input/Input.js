@@ -8,7 +8,7 @@ const Input = ({ label = 'Добавьте заголовок', children, ...pro
       <input
         className={styles.input}
         {...props}
-        autocomplete="off"
+        autoComplete="off"
         required
       ></input>
       {children}

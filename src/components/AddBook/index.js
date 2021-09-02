@@ -6,17 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import Input from "../IU/Input/Input";
 import Button from "../IU/Button/Button";
+import {initialInputs} from '../../constants';
 import "./style.scss";
 
 function AddBook() {
-  const initialInputs = {
-    book_name: "",
-    autors: "",
-    page_number: "",
-    publisher_name: "",
-    year_of_publishing: "",
-    book_image: "",
-  };
 
   const [inputs, setInputs] = useState(initialInputs);
   const {
@@ -143,7 +136,7 @@ function AddBook() {
               <span className="description">
                 Найдите подходящую картинку в интернете и вставте её url{" "}
                 <a
-                  className="customer fansy_link"
+                  className="customer fansy_link primary_link"
                   data-fancybox="gallery"
                   href={video}
                 >

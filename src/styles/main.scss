@@ -4,6 +4,7 @@
 
 body {
   height: 100vh;
+  line-height: 1;
   &:before {
     content: "";
     position: fixed;
@@ -29,7 +30,9 @@ body {
     background-repeat: no-repeat;
     filter: blur(6px);
   }
+
   section {
+    height: calc(100vh - 78px);
     background-color: rgba(255, 255, 255, 0.671);
     height: 100vh;
     h1{
@@ -42,6 +45,14 @@ body {
   }
   img{
     display: block;
+  }
+  .primary_link{
+    color: $Blue;
+    transition: all 0.3s;
+    &:hover{
+      color: $Red;
+      text-decoration: none;
+    }
   }
 }
 .animate__slideInDown {
