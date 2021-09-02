@@ -6,18 +6,17 @@ import bookImage from "../../images/book.jpg";
 
 const BookCard = ({ book, deleteBook }) => {
   const history = useHistory();
-
   function getImage(img) {
     img.src = bookImage;
   }
 
   return (
-    <div id={book.id} className={styles.book_card}>
+    <div className={styles.book_card}>
       <div className="image_container">
         <a
           className="customer fansy_link"
           data-fancybox="gallery"
-          href={book.book_image}
+          href={book.image}
         >
           <img
             className={`fansy_image ${styles.card_image}`}

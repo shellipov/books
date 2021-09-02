@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .card_list {
   height: calc(98vh - 93px - 82px - 48px);
   overflow: scroll;
@@ -33,27 +35,15 @@
   margin-right: .4rem;
 }
 
-.sort_input {
-  padding: 0;
-  margin: 0.2rem;
-  width: 100%;
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 3px;
-  height: 34px;
-  padding-left: 10px;
-  transition: all 0.3s;
-  font-size: small;
-  &[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-  &::placeholder {
-    color: rgb(182, 182, 182);
-  }
-  &:focus {
-    outline: none;
-    background: white;
-    border: 1px solid black;
-  }
+.there_no_books{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-family: $PrimaryFont;
+  color: white;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1200px) {

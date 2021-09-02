@@ -1,16 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Bookcard from "../BookCard/Bookcard";
 import Select from "../IU/Select/Select";
+import Input from "../IU/Input/Input";
 import firstStart from "../../functions/firstStart";
-import { initialBooks, initialSortType, sortData } from "../../constants";
+import { sortData, startBooks } from "../../constants";
 import styles from "./styles.module.scss";
 
 function BookList() {
-  const [books, setBooks] = useState(initialBooks);
-  const [sortType, setSortType] = useState(initialSortType);
+  const [books, setBooks] = useState(
+    JSON.parse(window.localStorage.getItem("books"))
+      ? JSON.parse(window.localStorage.getItem("books"))
+      : startBooks
+  );
+  const [sortType, setSortType] = useState(
+    JSON.parse(window.localStorage.getItem("sort_type"))
+      ? JSON.parse(window.localStorage.getItem("sort_type"))
+      : { type: "name", direction: "down" }
+  );
   const [searchData, setSearchData] = useState("");
-  const sortedBooks =  [...books].sort((a, b) => sortType.direction === "up" ? b[sortType.type].localeCompare(a[sortType.type]) : a[sortType.type].localeCompare(b[sortType.type]))
-    
+
+  const sortedBooks = useMemo(() => {
+    return [...books].sort((a, b) =>
+      sortType.direction === "up"
+        ? b[sortType.type].localeCompare(a[sortType.type])
+        : a[sortType.type].localeCompare(b[sortType.type])
+    );
+  }, [sortType, books]);
+
+  const sortedAndSearchedBooks = useMemo(() => {
+    const nameFiltedBooks = sortedBooks.filter((book) =>
+      book.name.toLocaleLowerCase().includes(searchData.toLocaleLowerCase())
+    );
+    return nameFiltedBooks;
+  }, [searchData, sortedBooks]);
+
   useEffect(() => {
     firstStart(setBooks);
     sortBooks(sortType);
@@ -24,15 +47,7 @@ function BookList() {
 
   const sortBooks = (sort) => {
     window.localStorage.setItem("sort_type", JSON.stringify(sort));
-
     setSortType(sort);
-    setBooks(
-      [...books].sort((a, b) =>
-        sort.direction === "up"
-          ? b[sort.type].localeCompare(a[sort.type])
-          : a[sort.type].localeCompare(b[sort.type])
-      )
-    );
   };
 
   const search = (e) => {
@@ -53,18 +68,27 @@ function BookList() {
           />
         </div>
         <div className={styles.search_block}>
-          <input
-            className={styles.sort_input}
+          <Input
             placeholder={"Поиск"}
             value={searchData}
             onChange={search}
-          ></input>
+          ></Input>
         </div>
       </div>
       <div className={styles.card_list}>
-        {books.map((book) => {
-          return <Bookcard key={book.id} book={book} deleteBook={deleteBook} />;
-        })}
+        {sortedAndSearchedBooks.length ? (
+          <>
+            {sortedAndSearchedBooks.map((book) => {
+              return (
+                <Bookcard key={book.id} book={book} deleteBook={deleteBook} />
+              );
+            })}
+          </>
+        ) : (
+          <>
+            <div className={styles.there_no_books}>Книг нет</div>
+          </>
+        )}
       </div>
     </>
   );

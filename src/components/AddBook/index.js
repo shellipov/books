@@ -4,7 +4,7 @@ import video from "../../video/add_image.mp4";
 import Modal from "../Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-import Input from "../IU/Input/Input";
+import LabelInput from "../IU/Input/LabelInput";
 import Button from "../IU/Button/Button";
 import {initialInputs} from '../../constants';
 import "./style.scss";
@@ -13,14 +13,15 @@ function AddBook() {
 
   const [inputs, setInputs] = useState(initialInputs);
   const {
-    book_name,
+    name,
     autors,
     page_number,
     publisher_name,
-    year_of_publishing,
-    book_image,
+    year,
+    image,
   } = inputs;
-  const year = new Date().getFullYear();
+  
+  const this_year = new Date().getFullYear();
   const [error, setError] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [isImageLoad, setIsImageLoad] = useState(false);
@@ -70,17 +71,17 @@ function AddBook() {
       <div className="add_book_page">
         <h1 className="animate__animated animate__slideInDown">Новая книга</h1>
         <form onSubmit={handleSubmit} className="add_book_form">
-          <Input
+          <LabelInput
             label="Название книги"
             placeholder="Например: Война и мир"
             type="text"
-            name="book_name"
+            name="name"
             onChange={(e) => changeInputValue(e)}
-            value={book_name}
+            value={name}
             maxLength={30}
           />
 
-          <Input
+          <LabelInput
             label="Автор книги"
             placeholder="Например: Лев Толстой (Если авторов несколько, введите их через запятую)"
             type="text"
@@ -89,9 +90,9 @@ function AddBook() {
             value={autors}
           >
             {error && <span className="error">Ошибка: {error}</span>}
-          </Input>
+          </LabelInput>
 
-          <Input
+          <LabelInput
             label="Количесво страниц"
             placeholder="Например: 850"
             type="number"
@@ -102,7 +103,7 @@ function AddBook() {
             max={10000}
           />
 
-          <Input
+          <LabelInput
             label="Название издательства"
             placeholder="Например: Просвещение"
             type="text"
@@ -112,26 +113,26 @@ function AddBook() {
             maxLength={30}
           />
 
-          <Input
+          <LabelInput
             label="Год издательства"
             placeholder="Например: 1920"
             type="number"
-            name="year_of_publishing"
+            name="year"
             onChange={(e) => changeInputValue(e)}
-            value={year_of_publishing}
+            value={year}
             min={1800}
-            max={year}
+            max={this_year}
           />
 
           <div className="row justify-content-center align-items-center">
             <div className="col-md-10">
-              <Input
+              <LabelInput
                 label="Обложка"
                 placeholder="Например: https://html5book.ru/wp-content/uploads/2017/05/krasivaya_forma_html.jpg"
                 type="text"
-                name="book_image"
+                name="image"
                 onChange={(e) => changeInputValue(e)}
-                value={book_image}
+                value={image}
               />
               <span className="description">
                 Найдите подходящую картинку в интернете и вставте её url{" "}
@@ -147,7 +148,7 @@ function AddBook() {
             <div className="col-md-2">
               <img
                 className="book"
-                src={isImageLoad ? book_image : book}
+                src={isImageLoad ? image : book}
                 alt="book_image"
               />
             </div>
@@ -163,7 +164,7 @@ function AddBook() {
           onLoad={() => setIsImageLoad(true)}
           onError={() => setIsImageLoad(false)}
           hidden={true}
-          src={book_image}
+          src={image}
           alt="book_image"
         />
       </div>
